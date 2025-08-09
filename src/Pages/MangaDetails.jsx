@@ -14,15 +14,15 @@ export default function MangaDetails() {
       .get(
         `https://api.mangadex.org/manga/${id}?includes[]=cover_art&includes[]=author&includes[]=artist&includes[]=tag`
       )
-      .then((res) => setManga(res.data.data))
-      .catch(console.error);
+      .then((res) => setManga(res.data.data));
+    // .catch(console.error);
 
     axios
       .get(
         `https://api.mangadex.org/manga/${id}/feed?limit=40&translatedLanguage[]=en,ar&includeEmptyPages=0&order[chapter]=asc`
       )
-      .then((res) => setChapters(res.data.data))
-      .catch(console.error);
+      .then((res) => setChapters(res.data.data));
+    // .catch(console.error);
   }, [id]);
 
   if (!manga) return <div className="details-loading">Loading...</div>;
@@ -31,7 +31,7 @@ export default function MangaDetails() {
   const coverRel = manga.relationships?.find((r) => r.type === "cover_art");
   const coverUrl = coverRel
     ? `https://uploads.mangadex.org/covers/${manga.id}/${coverRel.attributes.fileName}.512.jpg`
-    : "https://mangadex.org/img/cover-placeholder.png";
+    : "mafi cover";
   const title = attr.title.en || Object.values(attr.title)[0];
   const description = attr.description?.en || "No description available.";
   const genres = attr.tags?.map(

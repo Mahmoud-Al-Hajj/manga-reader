@@ -31,7 +31,6 @@ export default function Home() {
         setMangaList(res.data.data);
         setTotal(res.data.total || 0);
       })
-      .catch(console.error)
       .finally(() => setIsLoading(false));
   }, [page, search]);
 
