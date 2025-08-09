@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MangaCard from "./Components/MangaCard";
+import MangaDetails from "./Pages/MangaDetails";
+import React from "react";
+import NavBar from "./Components/NavBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Reader from "./Pages/Reader";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/manga/:id" element={<MangaDetails />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/read/:chapterId" element={<Reader />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

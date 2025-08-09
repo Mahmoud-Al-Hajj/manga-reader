@@ -1,0 +1,22 @@
+.reader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000;
+  min-height: 100vh;
+  padding: 40px 0 60px 0;
+  overflow-y: auto;
+}
+.reader-page {
+  display: block;
+  max-width: 900px;
+  width: 100%;
+  max-height: 92vh;
+  margin-bottom: 36px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32), 0 1.5px 0 0 #23272f;
+  border-radius: 8px;
+  background: #181a20;
+  object-fit: contain;
+  border: 1px solid #2d2f34;
+  padding: 6px;
+}

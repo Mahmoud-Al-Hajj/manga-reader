@@ -1,0 +1,53 @@
+/* NavBar - WeebCentral inspired */
+.navbar {
+  background: #1e2229;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #60a5fa;
+  letter-spacing: 1.8px;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navbar-link {
+  color: #e5e7eb;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: background 0.18s, color 0.18s;
+  outline: none;
+}
+.navbar-link:hover,
+.navbar-link.active {
+  background: #323743;
+  color: #60a5fa;
+}
+
+.navbar-search {
+  background: #23272f;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 32px;
+}
