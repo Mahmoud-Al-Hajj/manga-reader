@@ -14,7 +14,7 @@ export default function Reader() {
       try {
         // Get chapter info (for hash and server)
         const res = await axios.get(
-          `https://api.mangadex.org/at-home/server/${chapterId}`
+          `https://api.mangadex.org/at-home/server/${chapterId} `
         );
         const { baseUrl, chapter } = res.data;
         const pageUrls = chapter.data.map(

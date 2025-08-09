@@ -9,30 +9,59 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(0);
+  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
-
   const limit = 24;
+
   useEffect(() => {
     setIsLoading(true);
+    const params = [
+      `limit=${limit}`,
+      `offset=${(page - 1) * limit}`,
+      "order[followedCount]=desc",
+      "includes[]=cover_art",
+      "contentRating[]=safe",
+      "contentRating[]=suggestive",
+    ];
+    if (search) params.push(`title=${encodeURIComponent(search)}`);
     axios
-      .get(
-        `https://api.mangadex.org/manga?limit=${limit}&offset=${
-          (page - 1) * limit
-        }&order[followedCount]=desc&includes[]=cover_art`
-      )
+      .get(`https://api.mangadex.org/manga?${params.join("&")}`)
       .then((res) => {
         setMangaList(res.data.data);
         setTotal(res.data.total || 0);
       })
       .catch(console.error)
       .finally(() => setIsLoading(false));
-  }, [page]);
+  }, [page, search]);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearch(searchInput);
+    setPage(1);
+  };
 
   const totalPages = total ? Math.ceil(total / limit) : 1;
 
   return (
     <div className="home-container">
       <h1 className="home-title">Popular Manga</h1>
+      <form
+        className="home-search-bar"
+        onSubmit={handleSearchSubmit}
+        autoComplete="off"
+      >
+        <input
+          className="home-search-input"
+          type="text"
+          placeholder="Search manga..."
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <button className="home-search-btn" type="submit">
+          Search
+        </button>
+      </form>
       <div className="manga-list">
         {isLoading ? (
           <div className="home-loading">Loading...</div>

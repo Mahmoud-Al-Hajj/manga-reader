@@ -19,7 +19,7 @@ export default function MangaDetails() {
 
     axios
       .get(
-        `https://api.mangadex.org/chapter?manga=${id}&limit=40&order[chapter]=asc`
+        `https://api.mangadex.org/manga/${id}/feed?limit=40&translatedLanguage[]=en,ar&includeEmptyPages=0&order[chapter]=asc`
       )
       .then((res) => setChapters(res.data.data))
       .catch(console.error);
