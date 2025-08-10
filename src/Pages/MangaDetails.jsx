@@ -15,11 +15,11 @@ export default function MangaDetails() {
         `https://api.mangadex.org/manga/${id}?includes[]=cover_art&includes[]=author&includes[]=artist&includes[]=tag`
       )
       .then((res) => setManga(res.data.data));
-    // .catch(console.error);
+    //.catch(console.error);
 
     axios
       .get(
-        `https://api.mangadex.org/manga/${id}/feed?limit=40&translatedLanguage[]=en,ar&includeEmptyPages=0&order[chapter]=asc`
+        `https://api.mangadex.org/manga/${id}/feed?limit=40&includeEmptyPages=0&order[chapter]=asc`
       )
       .then((res) => setChapters(res.data.data));
     // .catch(console.error);
